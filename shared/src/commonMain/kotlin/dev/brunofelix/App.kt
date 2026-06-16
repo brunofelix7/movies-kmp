@@ -1,6 +1,5 @@
 package dev.brunofelix
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
@@ -11,9 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.AndroidUiModes.UI_MODE_NIGHT_YES
 import androidx.compose.ui.tooling.preview.Preview
-import movies_kmp.shared.generated.resources.Res
-import movies_kmp.shared.generated.resources.compose_multiplatform
-import org.jetbrains.compose.resources.painterResource
 
 @Composable
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
