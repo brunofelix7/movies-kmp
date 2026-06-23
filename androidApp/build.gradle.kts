@@ -8,8 +8,9 @@ plugins {
 
 kotlin {
     compilerOptions {
-        jvmTarget = JvmTarget.JVM_11
+        jvmTarget = JvmTarget.JVM_25
     }
+    jvmToolchain(25)
 }
 dependencies {
     implementation(projects.shared)
@@ -17,6 +18,7 @@ dependencies {
     implementation(libs.compose.uiToolingPreview)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     debugImplementation(libs.compose.uiTooling)
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 android {
@@ -41,7 +43,7 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_25
+        targetCompatibility = JavaVersion.VERSION_25
     }
 }
