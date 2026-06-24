@@ -5,7 +5,7 @@ plugins {
     alias(libs.plugins.androidMultiplatformLibrary)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    kotlin("plugin.serialization") version "2.4.0"
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -21,6 +21,7 @@ kotlin {
 
     androidLibrary {
         namespace = "dev.brunofelix.shared"
+        testNamespace = "dev.brunofelix.shared.test"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
 
