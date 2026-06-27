@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import dev.brunofelix.presentation.ui.MovieListScreen
 
 @Composable
 fun MovieNavHost(
@@ -14,7 +15,7 @@ fun MovieNavHost(
         startDestination = MovieRoute.ListScreen
     ) {
         composable<MovieRoute.ListScreen> {
-            // MovieListScreen()
+            MovieListScreen()
         }
         composable<MovieRoute.DetailScreen> {
             // MovieDetailScreen(it.id)
