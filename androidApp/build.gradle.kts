@@ -19,6 +19,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     debugImplementation(libs.compose.uiTooling)
     implementation(kotlin("stdlib-jdk8"))
+    implementation(libs.kotlinx.coroutines.android)
 }
 
 android {
