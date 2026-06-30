@@ -1,5 +1,6 @@
 package dev.brunofelix.data.api
 
+import dev.brunofelix.BuildKonfig
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.auth.Auth
 import io.ktor.client.plugins.auth.providers.BearerTokens
@@ -34,7 +35,7 @@ object KtorClient {
             bearer {
                 loadTokens {
                     BearerTokens(
-                        accessToken = "",
+                        accessToken = BuildKonfig.ACCESS_TOKEN,
                         refreshToken = ""
                     )
                 }
