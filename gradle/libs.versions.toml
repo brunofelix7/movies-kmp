@@ -12,6 +12,7 @@ kotlinx-serialization-json = "1.11.0"
 material3 = "1.11.0-alpha07"
 ktor = "3.5.1"
 kotlinx-coroutines = "1.11.0"
+buildkonfig = "0.22.0"
 
 [libraries]
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
@@ -45,3 +46,4 @@ composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMul
 composeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+codingfeline-buildkonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildkonfig" }

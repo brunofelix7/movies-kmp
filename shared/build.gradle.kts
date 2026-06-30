@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
-    id("com.codingfeline.buildkonfig") version "0.22.0"
+    alias(libs.plugins.codingfeline.buildkonfig)
 }
 
 val localProperties = Properties().apply {
