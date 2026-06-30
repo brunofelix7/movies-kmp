@@ -1,4 +1,6 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -6,6 +8,26 @@ plugins {
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.kotlinSerialization)
+    id("com.codingfeline.buildkonfig") version "0.22.0"
+}
+
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.inputStream().use { load(it) }
+    }
+}
+
+buildkonfig {
+    packageName = "dev.brunofelix"
+
+    val accessToken = localProperties.getProperty("ACCESS_TOKEN") ?: ""
+    val apiKey = localProperties.getProperty("API_KEY") ?: ""
+
+    defaultConfigs {
+        buildConfigField(STRING, "ACCESS_TOKEN", accessToken)
+        buildConfigField(STRING, "API_KEY", apiKey)
+    }
 }
 
 kotlin {
@@ -19,7 +41,7 @@ kotlin {
         }
     }
 
-    androidLibrary {
+    android {
         namespace = "dev.brunofelix.shared"
         testNamespace = "dev.brunofelix.shared.test"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
