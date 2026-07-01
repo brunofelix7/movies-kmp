@@ -23,10 +23,14 @@ buildkonfig {
 
     val accessToken = localProperties.getProperty("ACCESS_TOKEN") ?: ""
     val apiKey = localProperties.getProperty("API_KEY") ?: ""
+    val baseUrl = localProperties.getProperty("BASE_URL") ?: ""
+    val posterBaseUrl = localProperties.getProperty("POSTER_BASE_URL") ?: ""
 
     defaultConfigs {
         buildConfigField(STRING, "ACCESS_TOKEN", accessToken)
         buildConfigField(STRING, "API_KEY", apiKey)
+        buildConfigField(STRING, "BASE_URL", baseUrl)
+        buildConfigField(STRING, "POSTER_BASE_URL", posterBaseUrl)
     }
 }
 
