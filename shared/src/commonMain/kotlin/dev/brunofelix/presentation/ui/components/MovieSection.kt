@@ -2,6 +2,7 @@ package dev.brunofelix.presentation.ui.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -9,8 +10,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.brunofelix.presentation.state.MovieUiState
+import dev.brunofelix.presentation.ui.resources.AppTheme
 
 @Composable
 fun MovieSection(
@@ -19,7 +22,7 @@ fun MovieSection(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = modifier
+        modifier = modifier.fillMaxWidth()
     ) {
         Text(
             text = title,
@@ -34,5 +37,20 @@ fun MovieSection(
                 MovieCard(movie)
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    AppTheme {
+        MovieSection(
+            title = "Populars",
+            movies = listOf(
+                MovieUiState(),
+                MovieUiState(),
+                MovieUiState()
+            )
+        )
     }
 }

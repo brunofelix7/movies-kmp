@@ -10,13 +10,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.brunofelix.presentation.state.fakeMovie
 import dev.brunofelix.presentation.ui.components.MovieSection
+import dev.brunofelix.presentation.ui.resources.AppTheme
 import movies_kmp.shared.generated.resources.Res
 import movies_kmp.shared.generated.resources.populars
 import movies_kmp.shared.generated.resources.top_rated
 import movies_kmp.shared.generated.resources.upcoming
 import org.jetbrains.compose.resources.stringResource
 
-@Preview
 @Composable
 fun MovieListScreen(
     modifier: Modifier = Modifier
@@ -53,5 +53,13 @@ fun MovieListScreen(
                 )
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun Preview() {
+    AppTheme {
+        MovieListScreen()
     }
 }
