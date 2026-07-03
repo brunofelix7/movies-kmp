@@ -4,7 +4,7 @@ import dev.brunofelix.data.api.KtorService
 import dev.brunofelix.data.api.mapper.toDomain
 import dev.brunofelix.domain.model.MovieSection
 import dev.brunofelix.domain.repository.MovieRepository
-import dev.brunofelix.domain.util.CategoryType
+import dev.brunofelix.domain.model.enums.CategoryType
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO

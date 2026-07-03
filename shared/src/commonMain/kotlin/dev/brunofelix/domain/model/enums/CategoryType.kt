@@ -1,4 +1,4 @@
-package dev.brunofelix.domain.util
+package dev.brunofelix.domain.model.enums
 
 enum class CategoryType(
     val value: String

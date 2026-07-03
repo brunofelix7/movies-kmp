@@ -1,6 +1,6 @@
 package dev.brunofelix.domain.model
 
-import dev.brunofelix.domain.util.CategoryType
+import dev.brunofelix.domain.model.enums.CategoryType
 
 data class MovieSection(
     val sectionType: CategoryType = CategoryType.POPULAR,
