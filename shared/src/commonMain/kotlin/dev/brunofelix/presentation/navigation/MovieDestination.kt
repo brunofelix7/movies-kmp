@@ -2,10 +2,10 @@ package dev.brunofelix.presentation.navigation
 
 import kotlinx.serialization.Serializable
 
-sealed class MovieRoute {
+sealed interface MovieDestination {
     @Serializable
-    data object ListScreen : MovieRoute()
+    data object List : MovieDestination
     
     @Serializable
-    data class DetailScreen(val id: Int) : MovieRoute()
+    data class Detail(val id: Int) : MovieDestination
 }

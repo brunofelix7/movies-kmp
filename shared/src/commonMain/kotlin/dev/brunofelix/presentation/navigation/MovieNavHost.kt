@@ -12,13 +12,13 @@ fun MovieNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = MovieRoute.ListScreen
+        startDestination = MovieDestination.List
     ) {
-        composable<MovieRoute.ListScreen> {
+        composable<MovieDestination.List> {
             MovieListScreen()
         }
-        composable<MovieRoute.DetailScreen> {
-            // MovieDetailScreen(it.id)
+        composable<MovieDestination.Detail> {
+            // TODO: Create detail screen
         }
     }
 }
