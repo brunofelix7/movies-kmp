@@ -2,4 +2,11 @@
     <string name="populars">Populars</string>
     <string name="upcoming">Upcoming</string>
     <string name="top_rated">Top Rated</string>
+
+    <!-- Network errors -->
+    <string name="error_unauthorized">Session expired. Please log in again.</string>
+    <string name="error_not_found">The requested movie could not be found.</string>
+    <string name="error_server">Server error. Please try again later.</string>
+    <string name="error_no_internet">No internet connection. Check your network.</string>
+    <string name="error_unknown">An unexpected error occurred.</string>
 </resources>
