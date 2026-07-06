@@ -1,7 +1,7 @@
 package dev.brunofelix.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import dev.brunofelix.data.api.KtorClient
@@ -19,15 +19,14 @@ fun MovieNavHost(
 ) {
     // Instanciação manual temporária encapsulada com remember
     // para não recriar a infraestrutura em recomposições comuns
-    val viewModel: MovieViewModel = remember {
-        val client = KtorClient.client
-        val service = KtorServiceImpl(client)
-        val dataSource = MovieRemoteDataSourceImpl(service)
-        val repository = MovieRepositoryImpl(dataSource, Dispatchers.IO)
-        val useCase = GetMoviesUseCaseImpl(repository)
+    val client = KtorClient.client
+    val service = KtorServiceImpl(client)
+    val dataSource = MovieRemoteDataSourceImpl(service)
+    val repository = MovieRepositoryImpl(dataSource, Dispatchers.IO)
+    val useCase = GetMoviesUseCaseImpl(repository)
+    val viewModel: MovieViewModel = viewModel {
         MovieViewModel(useCase)
     }
-
     NavHost(
         navController = navController,
         startDestination = MovieDestination.List
