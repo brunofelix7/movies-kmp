@@ -12,13 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import dev.brunofelix.presentation.state.MovieUiState
+import dev.brunofelix.domain.model.Movie
 import dev.brunofelix.presentation.ui.resources.AppTheme
 
 @Composable
 fun MovieSection(
     title: String,
-    movies: List<MovieUiState>,
+    movies: List<Movie>,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -47,9 +47,9 @@ private fun Preview() {
         MovieSection(
             title = "Populars",
             movies = listOf(
-                MovieUiState(),
-                MovieUiState(),
-                MovieUiState()
+                Movie(),
+                Movie(),
+                Movie()
             )
         )
     }

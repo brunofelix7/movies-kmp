@@ -12,11 +12,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import dev.brunofelix.presentation.state.MovieUiState
+import dev.brunofelix.domain.model.Movie
 
 @Composable
 fun MovieCard(
-    movie: MovieUiState,
+    movie: Movie,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -42,6 +42,6 @@ fun MovieCard(
 @Composable
 private fun Preview() {
     MovieCard(
-        movie = MovieUiState()
+        movie = Movie()
     )
 }
