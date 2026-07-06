@@ -34,8 +34,8 @@ class MovieViewModel(
     val event = _event.receiveAsFlow()
 
     private fun getMoviesSection() {
+        if (_state.value is UiState.Success) return
         viewModelScope.launch {
-            _state.update { UiState.Loading }
             val uiState = when (val result = getMoviesUseCase()) {
                 is Resource.Success -> result.toUiState()
                 is Resource.Error -> {
