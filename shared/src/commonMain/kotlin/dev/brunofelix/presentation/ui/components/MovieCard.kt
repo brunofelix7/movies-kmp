@@ -1,6 +1,5 @@
 package dev.brunofelix.presentation.ui.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -12,10 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
 import dev.brunofelix.presentation.state.MovieUiState
-import movies_kmp.shared.generated.resources.Res
-import movies_kmp.shared.generated.resources.poster_path
-import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun MovieCard(
@@ -31,8 +28,8 @@ fun MovieCard(
                 .height(220.dp),
             shape = MaterialTheme.shapes.medium
         ) {
-            Image(
-                painter = painterResource(Res.drawable.poster_path),
+            AsyncImage(
+                model = movie.posterPath,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize()
