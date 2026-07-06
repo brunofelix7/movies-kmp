@@ -10,17 +10,23 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
 import dev.brunofelix.domain.model.MovieSection
 import dev.brunofelix.domain.model.enums.CategoryType
-import dev.brunofelix.presentation.mapper.toUiState
-import dev.brunofelix.presentation.ui.components.MovieSection
+import dev.brunofelix.presentation.navigation.MovieDestination
+import dev.brunofelix.presentation.state.MovieListState
+import dev.brunofelix.presentation.ui.components.MovieSectionComponent
 import dev.brunofelix.presentation.ui.resources.AppTheme
 import dev.brunofelix.presentation.util.UiState
 import dev.brunofelix.presentation.util.toReadableMessage
+import dev.brunofelix.presentation.viewmodel.MovieViewModel
 import movies_kmp.shared.generated.resources.Res
 import movies_kmp.shared.generated.resources.populars
 import movies_kmp.shared.generated.resources.top_rated
@@ -29,65 +35,86 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun MovieListRoute(
-    state: UiState<List<MovieSection>> = UiState.Loading,
-    onNavigateToDetails: (id: Long) -> Unit = {},
+    navController: NavController,
+    viewModel: MovieViewModel,
     modifier: Modifier = Modifier
 ) {
-    // Instanciação manual (temporária para testes)
-    MovieListScreen(
-        uiState = state,
-        modifier = modifier,
-        onMovieClick = onNavigateToDetails
-    )
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    val onCardClick = remember(navController) {
+        { id: Int -> navController.navigate(MovieDestination.Detail(id)) }
+    }
+    val uiState = remember(state) {
+        MovieListState(state, onCardClick)
+    }
+    MovieListScreen(uiState, modifier)
 }
 
 @Composable
-fun MovieListScreen(
-    uiState: UiState<List<MovieSection>>,
-    onMovieClick: (id: Long) -> Unit = {},
+private fun MovieListScreen(
+    uiState: MovieListState,
     modifier: Modifier = Modifier
 ) {
-    Scaffold(
-        modifier = modifier
-    ) { paddingValues ->
-        when (uiState) {
-            is UiState.Loading -> {
-                Box(
-                    modifier = Modifier.fillMaxSize().padding(paddingValues),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator()
-                }
-            }
-            is UiState.Success -> {
-                LazyColumn(
-                    modifier = Modifier.padding(paddingValues),
-                    contentPadding = PaddingValues(16.dp),
-                ) {
-                    items(uiState.data) { section ->
-                        val titleRes = when (section.sectionType) {
-                            CategoryType.POPULAR -> Res.string.populars
-                            CategoryType.TOP_RATED -> Res.string.top_rated
-                            CategoryType.UPCOMING -> Res.string.upcoming
-                        }
-                        MovieSection(
-                            title = stringResource(titleRes),
-                            movies = section.movies.map { it.toUiState() },
-                        )
-                    }
-                }
-            }
-            is UiState.Error -> {
-                Box(
-                    modifier = Modifier.fillMaxSize().padding(paddingValues),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = uiState.exception.toReadableMessage()
-                    )
-                }
-            }
+    Scaffold(modifier = modifier) { paddingValues ->
+        val stateModifier = Modifier.fillMaxSize().padding(paddingValues)
+        when (val state = uiState.state) {
+            is UiState.Loading -> LoadingState(modifier = stateModifier)
+            is UiState.Success -> MovieListContent(
+                sectionsList = state.data,
+                modifier = stateModifier
+            )
+            is UiState.Error -> ErrorState(
+                message = state.exception.toReadableMessage(),
+                modifier = stateModifier
+            )
         }
+    }
+}
+
+@Composable
+private fun LoadingState(
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
+    ) {
+        CircularProgressIndicator()
+    }
+}
+
+@Composable
+private fun MovieListContent(
+    sectionsList: List<MovieSection>,
+    modifier: Modifier = Modifier
+) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(16.dp),
+    ) {
+        items(sectionsList) { section ->
+            val titleRes = when (section.type) {
+                CategoryType.POPULAR -> Res.string.populars
+                CategoryType.TOP_RATED -> Res.string.top_rated
+                CategoryType.UPCOMING -> Res.string.upcoming
+            }
+            MovieSectionComponent(
+                title = stringResource(titleRes),
+                movies = section.movies,
+            )
+        }
+    }
+}
+
+@Composable
+private fun ErrorState(
+    message: String,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
+    ) {
+        Text(text = message)
     }
 }
 
@@ -95,8 +122,6 @@ fun MovieListScreen(
 @Composable
 private fun Preview() {
     AppTheme {
-        MovieListScreen(
-            uiState = UiState.Loading
-        )
+        MovieListScreen(uiState = MovieListState())
     }
 }

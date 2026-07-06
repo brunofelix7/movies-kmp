@@ -16,7 +16,7 @@ import dev.brunofelix.domain.model.Movie
 import dev.brunofelix.presentation.ui.resources.AppTheme
 
 @Composable
-fun MovieSection(
+fun MovieSectionComponent(
     title: String,
     movies: List<Movie>,
     modifier: Modifier = Modifier,
@@ -44,7 +44,7 @@ fun MovieSection(
 @Composable
 private fun Preview() {
     AppTheme {
-        MovieSection(
+        MovieSectionComponent(
             title = "Populars",
             movies = listOf(
                 Movie(),
