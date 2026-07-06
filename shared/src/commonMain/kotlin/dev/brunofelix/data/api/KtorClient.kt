@@ -26,7 +26,7 @@ object KtorClient {
         expectSuccess = true
 
         HttpResponseValidator {
-            handleResponseExceptionWithRequest { exception, request ->
+            handleResponseExceptionWithRequest { exception, _ ->
                 when (exception) {
                     is ClientRequestException -> {
                         when (exception.response.status.value) {
