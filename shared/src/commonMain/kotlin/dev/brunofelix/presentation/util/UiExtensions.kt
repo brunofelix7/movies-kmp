@@ -1,6 +1,10 @@
 package dev.brunofelix.presentation.util
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.lifecycle.ViewModel
+import androidx.navigation.NavBackStackEntry
+import androidx.navigation.NavController
 import dev.brunofelix.data.util.NetworkException
 import dev.brunofelix.domain.util.Resource
 import movies_kmp.shared.generated.resources.Res
@@ -10,6 +14,7 @@ import movies_kmp.shared.generated.resources.error_server
 import movies_kmp.shared.generated.resources.error_unauthorized
 import movies_kmp.shared.generated.resources.error_unknown
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 fun <T> Resource<T>.toUiState(): UiState<T> {
     return when (this) {
@@ -27,4 +32,15 @@ fun Throwable.toReadableMessage(): String {
         is NetworkException.NoInternet -> stringResource(Res.string.error_no_internet)
         else -> stringResource(Res.string.error_unknown)
     }
+}
+
+@Composable
+inline fun <reified T : ViewModel> NavBackStackEntry.sharedKoinViewModel(
+    navController: NavController
+): T {
+    val navGraphRoute = destination.parent?.route ?: return koinViewModel()
+    val parentEntry = remember(this) {
+        navController.getBackStackEntry(navGraphRoute)
+    }
+    return koinViewModel(viewModelStoreOwner = parentEntry)
 }
