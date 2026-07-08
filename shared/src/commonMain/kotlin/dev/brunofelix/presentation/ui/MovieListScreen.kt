@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import dev.brunofelix.domain.model.Movie
 import dev.brunofelix.domain.model.MovieSection
 import dev.brunofelix.domain.model.enums.CategoryType
 import dev.brunofelix.presentation.navigation.MovieDestination
@@ -27,6 +28,7 @@ import dev.brunofelix.presentation.ui.resources.AppTheme
 import dev.brunofelix.presentation.util.UiState
 import dev.brunofelix.presentation.util.toReadableMessage
 import dev.brunofelix.presentation.viewmodel.MovieViewModel
+import kotlinx.io.IOException
 import movies_kmp.shared.generated.resources.Res
 import movies_kmp.shared.generated.resources.populars
 import movies_kmp.shared.generated.resources.top_rated
@@ -120,8 +122,45 @@ private fun ErrorState(
 
 @Preview(showBackground = true)
 @Composable
-private fun Preview() {
+private fun LoadingPreview() {
     AppTheme {
-        MovieListScreen(uiState = MovieListState())
+        MovieListScreen(uiState = MovieListState(
+            state = UiState.Loading
+        ))
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun ErrorPreview() {
+    AppTheme {
+        MovieListScreen(uiState = MovieListState(
+            state = UiState.Error(IOException("Error"))
+        ))
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun SuccessPreview() {
+    val movies = listOf(Movie(), Movie(), Movie()
+    )
+    AppTheme {
+        MovieListScreen(uiState = MovieListState(
+            state = UiState.Success(listOf(
+                MovieSection(
+                    type = CategoryType.POPULAR,
+                    movies = movies
+                ),
+                MovieSection(
+                    type = CategoryType.TOP_RATED,
+                    movies = movies
+                ),
+                MovieSection(
+                    type = CategoryType.UPCOMING,
+                    movies = movies
+                )
+            ))
+        ))
     }
 }
