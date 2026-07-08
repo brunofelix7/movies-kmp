@@ -20,9 +20,13 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.io.IOException
 import kotlinx.serialization.json.Json
 
-object KtorClient {
+interface KtorClient {
+    val httpClient: HttpClient
+}
 
-    val client = HttpClient {
+class KtorClientImpl : KtorClient {
+
+    override val httpClient = HttpClient {
         expectSuccess = true
 
         HttpResponseValidator {
