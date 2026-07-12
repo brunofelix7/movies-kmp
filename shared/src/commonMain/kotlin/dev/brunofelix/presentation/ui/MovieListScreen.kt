@@ -60,6 +60,7 @@ private fun MovieListScreen(
             is UiState.Loading -> LoadingState(modifier = stateModifier)
             is UiState.Success -> MovieListContent(
                 sectionsList = state.data,
+                onCardClick = uiState.onCardClick,
                 modifier = stateModifier
             )
             is UiState.Error -> ErrorState(
@@ -73,7 +74,8 @@ private fun MovieListScreen(
 @Composable
 private fun MovieListContent(
     sectionsList: List<MovieSection>,
-    modifier: Modifier = Modifier
+    onCardClick: (Int) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     LazyColumn(
         modifier = modifier,
@@ -88,6 +90,7 @@ private fun MovieListContent(
             MovieSectionComponent(
                 title = stringResource(titleRes),
                 movies = section.movies,
+                onCardClick = onCardClick
             )
         }
     }

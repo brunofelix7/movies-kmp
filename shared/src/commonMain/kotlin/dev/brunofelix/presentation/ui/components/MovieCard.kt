@@ -1,5 +1,6 @@
 package dev.brunofelix.presentation.ui.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -17,6 +18,7 @@ import dev.brunofelix.domain.model.Movie
 @Composable
 fun MovieCard(
     movie: Movie,
+    onClick: (Int) -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -25,7 +27,8 @@ fun MovieCard(
         Card(
             modifier = Modifier
                 .width(150.dp)
-                .height(220.dp),
+                .height(220.dp)
+                .clickable { onClick(movie.id) },
             shape = MaterialTheme.shapes.medium
         ) {
             AsyncImage(

@@ -22,6 +22,7 @@ import org.jetbrains.compose.resources.stringResource
 fun MovieSectionComponent(
     title: String,
     movies: List<Movie>,
+    onCardClick: (Int) -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -37,7 +38,7 @@ fun MovieSectionComponent(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(movies) { movie ->
-                MovieCard(movie)
+                MovieCard(movie, onCardClick)
             }
         }
     }
