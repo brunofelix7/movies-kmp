@@ -10,7 +10,7 @@ import dev.brunofelix.data.source.MovieRemoteDataSourceImpl
 import dev.brunofelix.domain.repository.MovieRepository
 import dev.brunofelix.domain.use_case.GetMoviesUseCase
 import dev.brunofelix.domain.use_case.GetMoviesUseCaseImpl
-import dev.brunofelix.presentation.viewmodel.MovieViewModel
+import dev.brunofelix.presentation.viewmodel.MovieListViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import org.koin.core.module.dsl.viewModel
@@ -35,5 +35,5 @@ val useCaseModule = module {
 }
 
 val viewModelModule = module {
-    viewModel { MovieViewModel(get()) }
+    viewModel { MovieListViewModel(get()) }
 }

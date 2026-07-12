@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class MovieViewModel(
+class MovieListViewModel(
     private val getMoviesUseCase: GetMoviesUseCase
 ) : ViewModel() {
 

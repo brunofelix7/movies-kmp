@@ -25,7 +25,7 @@ import dev.brunofelix.presentation.ui.components.MovieSectionComponent
 import dev.brunofelix.presentation.ui.theme.AppTheme
 import dev.brunofelix.presentation.util.UiState
 import dev.brunofelix.presentation.util.toReadableMessage
-import dev.brunofelix.presentation.viewmodel.MovieViewModel
+import dev.brunofelix.presentation.viewmodel.MovieListViewModel
 import kotlinx.io.IOException
 import movies_kmp.shared.generated.resources.Res
 import movies_kmp.shared.generated.resources.populars
@@ -36,7 +36,7 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun MovieListRoute(
     navController: NavController,
-    viewModel: MovieViewModel,
+    viewModel: MovieListViewModel,
     modifier: Modifier = Modifier
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
