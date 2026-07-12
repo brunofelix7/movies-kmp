@@ -143,8 +143,7 @@ private fun ErrorPreview() {
 @Preview(showBackground = true)
 @Composable
 private fun SuccessPreview() {
-    val movies = listOf(Movie(), Movie(), Movie()
-    )
+    val movies = listOf(Movie(), Movie(), Movie())
     AppTheme {
         MovieListScreen(uiState = MovieListState(
             state = UiState.Success(listOf(

@@ -14,6 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.brunofelix.domain.model.Movie
 import dev.brunofelix.presentation.ui.theme.AppTheme
+import movies_kmp.shared.generated.resources.Res
+import movies_kmp.shared.generated.resources.populars
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun MovieSectionComponent(
@@ -40,12 +43,12 @@ fun MovieSectionComponent(
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
 private fun Preview() {
     AppTheme {
         MovieSectionComponent(
-            title = "Populars",
+            title = stringResource(Res.string.populars),
             movies = listOf(
                 Movie(),
                 Movie(),
