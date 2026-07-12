@@ -1,4 +1,4 @@
-package dev.brunofelix.presentation.ui.resources
+package dev.brunofelix.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.runtime.Composable

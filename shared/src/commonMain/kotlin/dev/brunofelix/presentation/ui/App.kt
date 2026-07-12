@@ -9,7 +9,7 @@ import dev.brunofelix.di.networkModule
 import dev.brunofelix.di.useCaseModule
 import dev.brunofelix.di.viewModelModule
 import dev.brunofelix.presentation.navigation.MovieNavHost
-import dev.brunofelix.presentation.ui.resources.AppTheme
+import dev.brunofelix.presentation.ui.theme.AppTheme
 import org.koin.compose.KoinApplication
 import org.koin.dsl.koinConfiguration
 

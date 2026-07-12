@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.brunofelix.domain.model.Movie
-import dev.brunofelix.presentation.ui.resources.AppTheme
+import dev.brunofelix.presentation.ui.theme.AppTheme
 
 @Composable
 fun MovieSectionComponent(

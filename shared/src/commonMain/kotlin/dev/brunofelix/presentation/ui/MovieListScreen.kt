@@ -24,7 +24,7 @@ import dev.brunofelix.domain.model.enums.CategoryType
 import dev.brunofelix.presentation.navigation.MovieDestination
 import dev.brunofelix.presentation.state.MovieListState
 import dev.brunofelix.presentation.ui.components.MovieSectionComponent
-import dev.brunofelix.presentation.ui.resources.AppTheme
+import dev.brunofelix.presentation.ui.theme.AppTheme
 import dev.brunofelix.presentation.util.UiState
 import dev.brunofelix.presentation.util.toReadableMessage
 import dev.brunofelix.presentation.viewmodel.MovieViewModel
