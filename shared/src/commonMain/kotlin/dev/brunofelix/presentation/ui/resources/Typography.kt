@@ -20,7 +20,7 @@ val urbanist: FontFamily
     )
 
 @Composable
-fun AppTypography() = Typography(
+fun appTypography() = Typography(
     displaySmall = TextStyle(
         fontSize = 26.sp,
         fontWeight = FontWeight.Normal,
