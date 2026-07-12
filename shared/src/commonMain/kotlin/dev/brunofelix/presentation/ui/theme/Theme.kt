@@ -10,7 +10,7 @@ fun AppTheme(
     MaterialTheme(
         colorScheme = DarkColorPalette,
         typography = appTypography(),
-        shapes = MaterialTheme.shapes,
+        shapes = AppShapes,
         content = content
     )
 }
