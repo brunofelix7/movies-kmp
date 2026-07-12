@@ -2,6 +2,7 @@
     <string name="populars">Popular Movies</string>
     <string name="upcoming">Upcoming Movies</string>
     <string name="top_rated">Top Rated Movies</string>
+    <string name="movie_detail_title">Movie details</string>
 
     <!-- Network errors -->
     <string name="error_unauthorized">Session expired. Please log in again</string>
