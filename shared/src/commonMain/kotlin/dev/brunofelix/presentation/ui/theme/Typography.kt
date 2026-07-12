@@ -33,7 +33,7 @@ fun appTypography() = Typography(
     ),
     titleLarge = TextStyle(
         fontSize = 20.sp,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontFamily = urbanist,
     ),
     titleMedium = TextStyle(
