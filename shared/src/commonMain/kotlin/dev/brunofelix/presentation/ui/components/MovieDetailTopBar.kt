@@ -44,7 +44,7 @@ fun MovieDetailTopBar(
                     imageVector = FontAwesomeIcons.Solid.ChevronLeft,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.primary,
-                    modifier = Modifier.size(22.dp)
+                    modifier = Modifier.size(20.dp)
                 )
             }
         }
