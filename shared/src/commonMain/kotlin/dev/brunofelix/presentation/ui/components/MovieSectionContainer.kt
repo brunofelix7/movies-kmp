@@ -19,7 +19,7 @@ import movies_kmp.shared.generated.resources.populars
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun MovieSectionComponent(
+fun MovieSectionContainer(
     title: String,
     movies: List<Movie>,
     onCardClick: (Int) -> Unit = {},
@@ -48,13 +48,9 @@ fun MovieSectionComponent(
 @Composable
 private fun Preview() {
     AppTheme {
-        MovieSectionComponent(
+        MovieSectionContainer(
             title = stringResource(Res.string.populars),
-            movies = listOf(
-                Movie(),
-                Movie(),
-                Movie()
-            )
+            movies = listOf(Movie(), Movie(), Movie())
         )
     }
 }

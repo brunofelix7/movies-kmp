@@ -21,7 +21,7 @@ import dev.brunofelix.presentation.navigation.MovieDestination
 import dev.brunofelix.presentation.state.MovieListState
 import dev.brunofelix.presentation.ui.components.ErrorState
 import dev.brunofelix.presentation.ui.components.LoadingState
-import dev.brunofelix.presentation.ui.components.MovieSectionComponent
+import dev.brunofelix.presentation.ui.components.MovieSectionContainer
 import dev.brunofelix.presentation.ui.theme.AppTheme
 import dev.brunofelix.presentation.util.UiState
 import dev.brunofelix.presentation.util.toReadableMessage
@@ -87,7 +87,7 @@ private fun MovieListContent(
                 CategoryType.TOP_RATED -> Res.string.top_rated
                 CategoryType.UPCOMING -> Res.string.upcoming
             }
-            MovieSectionComponent(
+            MovieSectionContainer(
                 title = stringResource(titleRes),
                 movies = section.movies,
                 onCardClick = onCardClick
