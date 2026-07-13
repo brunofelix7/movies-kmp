@@ -26,8 +26,8 @@ fun MovieCard(
     ) {
         Card(
             modifier = Modifier
-                .width(150.dp)
-                .height(220.dp)
+                .width(128.dp)
+                .height(196.dp)
                 .clickable { onClick(movie.id) },
             shape = MaterialTheme.shapes.medium
         ) {
@@ -44,7 +44,5 @@ fun MovieCard(
 @Preview
 @Composable
 private fun Preview() {
-    MovieCard(
-        movie = Movie()
-    )
+    MovieCard(movie = Movie())
 }
