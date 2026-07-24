@@ -6,7 +6,7 @@ import dev.brunofelix.presentation.util.UiState
 
 @Immutable
 data class MovieDetailState(
-    val state: UiState<Movie> = UiState.Loading,
+    val uiState: UiState<Movie> = UiState.Loading,
     val onBack: () -> Unit = {},
     val onWatchTrailer: () -> Unit = {}
 )
