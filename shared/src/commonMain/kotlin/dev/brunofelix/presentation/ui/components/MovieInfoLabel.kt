@@ -18,7 +18,7 @@ import compose.icons.fontawesomeicons.Solid
 import compose.icons.fontawesomeicons.solid.Star
 
 @Composable
-fun MovieDetailInfoLabel(
+fun MovieInfoLabel(
     icon: ImageVector,
     text: String,
     modifier: Modifier = Modifier
@@ -46,7 +46,7 @@ fun MovieDetailInfoLabel(
 @Preview
 @Composable
 private fun Preview() {
-    MovieDetailInfoLabel(
+    MovieInfoLabel(
         icon = FontAwesomeIcons.Solid.Star,
         text = "8.5"
     )
