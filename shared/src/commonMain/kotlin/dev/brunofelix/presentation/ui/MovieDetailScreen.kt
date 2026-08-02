@@ -37,6 +37,7 @@ import dev.brunofelix.presentation.ui.components.LoadingState
 import dev.brunofelix.presentation.ui.components.MovieDetailTopBar
 import dev.brunofelix.presentation.ui.components.MovieGenreChip
 import dev.brunofelix.presentation.ui.components.MovieInfoLabel
+import dev.brunofelix.presentation.ui.components.WatchTrailerButton
 import dev.brunofelix.presentation.ui.theme.AppTheme
 import dev.brunofelix.presentation.util.UiState
 import dev.brunofelix.presentation.util.toReadableMessage
@@ -136,6 +137,13 @@ private fun MovieDetailScreen(
                             MovieGenreChip(
                                 genre = "Action"
                             )
+                        }
+                        WatchTrailerButton(
+                            modifier = Modifier
+                                .padding(top = 16.dp)
+                                .fillMaxWidth()
+                        ) {
+                            state.onWatchTrailer()
                         }
                     }
                 }
