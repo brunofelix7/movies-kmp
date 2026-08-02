@@ -6,18 +6,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
 import dev.brunofelix.presentation.ui.MovieDetailRoute
 import dev.brunofelix.presentation.ui.MovieListRoute
-import dev.brunofelix.presentation.util.sharedKoinViewModel
-import dev.brunofelix.presentation.viewmodel.MovieListViewModel
 
 fun NavGraphBuilder.movieGraph(
     navController: NavController
 ) {
     composable<MovieDestination.List> {
-        val viewModel = it.sharedKoinViewModel<MovieListViewModel>(navController)
-
         MovieListRoute(
-            navController = navController,
-            viewModel = viewModel
+            navController = navController
         )
     }
     composable<MovieDestination.Detail> {
