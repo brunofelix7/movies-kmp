@@ -1,9 +1,7 @@
 package dev.brunofelix.presentation.ui.components
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ElevatedButton
@@ -29,7 +27,6 @@ fun WatchTrailerButton(
         modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Spacer(Modifier.height(16.dp))
         ElevatedButton(
             onClick = onWatchTrailer,
             modifier = Modifier
