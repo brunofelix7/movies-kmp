@@ -32,12 +32,12 @@ import movies_kmp.shared.generated.resources.populars
 import movies_kmp.shared.generated.resources.top_rated
 import movies_kmp.shared.generated.resources.upcoming
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun MovieListRoute(
     navController: NavController,
-    viewModel: MovieListViewModel,
-    modifier: Modifier = Modifier
+    viewModel: MovieListViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val onCardClick = remember(navController) {
@@ -46,7 +46,7 @@ fun MovieListRoute(
     val uiState = remember(state) {
         MovieListState(state, onCardClick)
     }
-    MovieListScreen(uiState, modifier)
+    MovieListScreen(uiState)
 }
 
 @Composable
