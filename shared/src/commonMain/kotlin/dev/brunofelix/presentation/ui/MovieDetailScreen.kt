@@ -139,12 +139,11 @@ private fun MovieDetailScreen(
                             )
                         }
                         WatchTrailerButton(
+                            onWatchTrailer = state.onWatchTrailer,
                             modifier = Modifier
                                 .padding(top = 16.dp)
                                 .fillMaxWidth()
-                        ) {
-                            state.onWatchTrailer()
-                        }
+                        )
                     }
                 }
                 is UiState.Error -> {
